@@ -1,16 +1,15 @@
 pragma solidity 0.5.12;
 import "./Ownable.sol";
 
-//contract updted 21/11/20
+
 contract FlipCoin is Ownable{
 
-    //state variables
     uint256 contractBalance;
     string public message;
     event playerStatus(bool, uint);
 
     constructor() public{
-        contractBalance = owner.balance;
+        contractBalance = 0;
     }
 
     struct Player{
@@ -82,6 +81,7 @@ contract FlipCoin is Ownable{
     }
 
     function initalDepositToContract() public payable{
+        contractBalance = address(this).balance;
     }
 
     function withdrawWinAmount(address payable playerAccount, uint winAmount) public {
