@@ -89,9 +89,8 @@ contract FlipCoin is Ownable{
         address creator = msg.sender;
 
         toTransfer = players[creator].sumWin;
-
-        playerAccount.transfer(toTransfer);
         resetPlayerStatus();
+        playerAccount.transfer(toTransfer);
     }
 
     function insertPlayer(Player memory newPlayer) private {
